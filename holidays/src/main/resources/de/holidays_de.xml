@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <HolidayConfig xmlns="http://kgerdes.de/namespace"
+				xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+				 >
+	<Configuration>
+		<Languages>de,en</Languages>
+		<Dateformat>dd.MM.yyyy</Dateformat>
+	</Configuration>
+	<Declarations>
+		<DefinitionDays name="Saturday">
+			<Type>central.calc.WeeklyHolidays</Type>
+			<Param name="day">SATURDAY</Param>
+			
+			<Description lang="de">Samstag</Description>
+			<Description lang="en">Saturday</Description>
+		</DefinitionDays>
+		<DefinitionDays name="Sunday">
+			<Type>central.calc.WeeklyHolidays</Type>
+			<Param name="day">SUNDAY</Param>
+			
+			<Description lang="de">Sonntag</Description>
+			<Description lang="en">Sunday</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="Holy Three Kings">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">1</Param>
+			<Param name="day">6</Param>
+			<Description lang="de">Heilige drei Könige</Description>
+			<Description lang="en">Holy Three Kings</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="International Womens Day">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">3</Param>
+			<Param name="day">8</Param>
+			<Range start="01.01.2020" end="" type="inner" />
+			<Description lang="de">Internationaler Frauentag</Description>
+			<Description lang="en">International Women's Day</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="Corpus Christi">
+			<Type>central.calc.EasterHolidays</Type>
+			<Param name="offset">60</Param>
+			
+			<Description lang="de">Fronleichnam</Description>
+			<Description lang="en">Corpus Christi</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="Liberation Day">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">5</Param>
+			<Param name="day">8</Param>
+			<Range start="01.01.2020" end="01.01.2021" type="inner" />
+			<Description lang="de">Tag der Befreiung</Description>
+			<Description lang="en">Liberation Day</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="Augsburg Peace Festival">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">8</Param>
+			<Param name="day">8</Param>
+			<Description lang="de">Augsburger Friedensfest</Description>
+			<Description lang="en">Augsburg Peace Festival</Description>
+		</DefinitionDays>
+		<DefinitionDays name="Assumption Day">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">8</Param>
+			<Param name="day">15</Param>
+			<Description lang="de">Mariä Himmelfahrt</Description>
+			<Description lang="en">Assumption Day</Description>
+		</DefinitionDays>
+		<DefinitionDays name="Reformation day">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">10</Param>
+			<Param name="day">31</Param>
+			<Param name="description-de"></Param>
+			<Description lang="de">Reformationstag</Description>
+			<Description lang="en">Reformation Day</Description>
+		</DefinitionDays>
+		<DefinitionDays name="All Saints Day">
+			<Type>central.calc.YearlyHolidays</Type>
+			<Param name="month">11</Param>
+			<Param name="day">1</Param>
+			<Description lang="de">Allerheiligen</Description>
+			<Description lang="en">All Saints Day</Description>
+		</DefinitionDays>
+		<DefinitionDays name="Day of Prayer and Repentance">
+				<Type>central.calc.AdventHolidays</Type>
+				<Param name="offset">-32</Param>
+				<Description lang="de">Buß- und Bettag</Description>
+				<Description lang="en">Day of Prayer and Repentance</Description>
+			</DefinitionDays>
+			
+			<DefinitionDays name="Christmas Eve">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">12</Param>
+				<Param name="day">24</Param>
+				<Description lang="de">Heiligabend</Description>
+				<Description lang="en">Christmas Eve</Description>
+			</DefinitionDays>
+		
+		<DefinitionBlock name="ForAll">
+			<DefinitionDays name="NewYear">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">1</Param>
+				<Param name="day">1</Param>
+				<Description lang="de">Neujahr</Description>
+				<Description lang="en">New Year</Description>
+			</DefinitionDays>
+			<DefinitionDays name="Good Friday">
+				<Type>central.calc.EasterHolidays</Type>
+				<Param name="offset">-2</Param>
+				<Description lang="de">Karfreitag</Description>
+				<Description lang="en">Good Friday</Description>
+			</DefinitionDays>
+			<DefinitionDays name="EasterMonday">
+				<Type>central.calc.EasterHolidays</Type>
+				<Param name="offset">1</Param>
+				<Description lang="de">Ostermontag</Description>
+				<Description lang="en">Easter Monday</Description>
+			</DefinitionDays>
+			<DefinitionDays name="1stMay">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">5</Param>
+				<Param name="day">1</Param>
+				<Description lang="de">1. Mai</Description>
+				<Description lang="en">1st of May</Description>
+			</DefinitionDays>
+			<DefinitionDays name="Ascension of Christ">
+				<Type>central.calc.EasterHolidays</Type>
+				<Param name="offset">39</Param>
+				<Description lang="de">Christi Himmelfahrt</Description>
+				<Description lang="en">Ascension of Christ</Description>
+			</DefinitionDays>
+			<DefinitionDays name="Whit Monday">
+				<Type>central.calc.EasterHolidays</Type>
+				<Param name="offset">50</Param>
+				<Description lang="de">Pfingstmontag</Description>
+				<Description lang="en">Whit Monday</Description>
+			</DefinitionDays>
+			<DefinitionDays name="Day of German unity">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">10</Param>
+				<Param name="day">3</Param>
+				<Description lang="de">Tag der deutschen Einheit</Description>
+				<Description lang="en">Day of German Unity</Description>
+			</DefinitionDays>
+			
+			<DefinitionDays name="1stChristmasHoliday">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">12</Param>
+				<Param name="day">25</Param>
+				<Description lang="de">1. Weihnachtsfeiertag</Description>
+				<Description lang="en">1st Christmas Holiday</Description>
+			</DefinitionDays>
+			<DefinitionDays name="2stChristmasHoliday">
+				<Type>central.calc.YearlyHolidays</Type>
+				<Param name="month">12</Param>
+				<Param name="day">26</Param>
+				<Description lang="de">2. Weihnachtsfeiertag</Description>
+				<Description lang="en">2nd Christmas Holiday</Description>
+			</DefinitionDays>
+			
+		</DefinitionBlock>
+	</Declarations>
+	<Definitions>
+		<Collection name="BW">
+			<Ref name="ForAll" />
+			<Ref name="Holy Three Kings" />
+			<Ref name="Corpus Christi" />
+			<Ref name="All Saints Day" />
+			<Description lang="de">Baden-Württemberg</Description>
+			<Description lang="en">Baden-Württemberg</Description>
+		</Collection>
+		<Collection name="BY" >
+			<Ref name="ForAll" />
+			<Ref name="Holy Three Kings" />
+			<Ref name="Corpus Christi" />
+			<Ref name="All Saints Day" />
+			<Description lang="de">Bayern</Description>
+			<Description lang="en">Bavaria</Description>
+		</Collection>
+		<Collection name="BY_Augsburg" >
+			<RefCollection name="BY" />
+			<Ref name="Augsburg Peace Festival" />
+			<Description lang="de">Bayern mit Augsburger Friedensfest</Description>
+			<Description lang="en">Bavaria and Augsburg Peace Festival</Description>
+		</Collection>
+		<Collection name="BY_MariaeHimmelfahrt" >
+			<RefCollection name="BY" />
+			<Ref name="Assumption Day" />
+			<Description lang="de">Bayern mit Mariä Himmelfahrt</Description>
+			<Description lang="en">Bavaria and Assumption Day</Description>
+		</Collection>
+		
+		<Collection name="BE" >
+			<Ref name="ForAll" />
+			<Ref name="International Womens Day" />
+			<Ref name="Liberation Day" />
+			<Description lang="de">Berlin</Description>
+			<Description lang="en">Berlin</Description>
+		</Collection>
+		<Collection name="BB" >
+			<Ref name="ForAll" />
+			<Ref name="Reformation day" />
+			<Description lang="de">Brandenburg</Description>
+			<Description lang="en">Brandenburg</Description>
+		</Collection>
+		<Collection name="HB" >
+			<Ref name="ForAll" />
+			<Description lang="de">Hansestadt Bremen</Description>
+			<Description lang="en">Hanseatic City of Bremen</Description>
+		</Collection>
+		<Collection name="HH" >
+			<Ref name="ForAll" />
+			<Description lang="de">Hansestadt Hamburg</Description>
+			<Description lang="en">Hanseatic City of Hamburg</Description>
+		</Collection>
+		<Collection name="HE" >
+			<Ref name="ForAll" />
+			<Ref name="Corpus Christi" />
+			<Description lang="de">Hessen</Description>
+			<Description lang="en">Hessen</Description>
+		</Collection>
+		<Collection name="MV">
+			<Ref name="ForAll" />
+			<Ref name="Reformation day" />
+			<Description lang="de">Mecklenburg-Vorpommern</Description>
+			<Description lang="en">Mecklenburg-Vorpommern</Description>
+		</Collection>
+		<Collection name="NI">
+			<Ref name="ForAll" />
+			<Description lang="de">Niedersachsen</Description>
+			<Description lang="en">Lower Saxony</Description>
+		</Collection>
+		<Collection name="NRW" >
+			<Ref name="ForAll" />
+			<Ref name="Corpus Christi" />
+			<Ref name="All Saints Day" />
+			<Description lang="de">Nordrhein-Westfalen</Description>
+			<Description lang="en">North Rhine-Westphalia</Description>
+			
+		</Collection>
+		<Collection name="RP" >
+			<Ref name="ForAll" />
+			<Ref name="Corpus Christi" />
+			<Ref name="All Saints Day" />
+			<Description lang="de">Rheinland-Pfalz</Description>
+			<Description lang="en">Rhineland-Palatinate</Description>
+		</Collection>
+		<Collection name="SL">
+			<Ref name="ForAll" />
+			<Ref name="Corpus Christi" />
+			<Ref name="Assumption Day" />
+			<Ref name="All Saints Day" />
+			<Description lang="de">Saarland</Description>
+			<Description lang="en">Saarland</Description>
+		</Collection>
+		<Collection name="SN">
+			<Ref name="ForAll" />
+			<Ref name ="NewYear" />
+			<Ref name="Reformation day" />
+			<Ref name="Day of Prayer and Repentance" />
+			<Description lang="de">Sachsen</Description>
+			<Description lang="en">Saxony</Description>
+		</Collection>
+		<Collection name="SN_CorpusChristi">
+			<RefCollection name="SN" />
+			<Ref name="Corpus Christi" />
+			<Description lang="de">Sachsen mit Fronleichnam</Description>
+			<Description lang="en">Saxony and Corpus Christi</Description>
+		</Collection>
+		<Collection name="ST">
+			<Ref name="ForAll" />
+			<Ref name="Holy Three Kings" />
+			<Ref name="Reformation day" />
+			<Description lang="de">Sachsen-Anhalt</Description>
+			<Description lang="en">Saxony-Anhalt</Description>
+		</Collection>
+		<Collection name="SH">
+			<Ref name="ForAll" />
+			<Description lang="de">Schleswig-Holstein</Description>
+			<Description lang="en">Schleswig-Holstein</Description>
+		</Collection>
+		<Collection name="TH">
+			<Ref name="ForAll" />
+			<Ref name="Reformation day" />
+			<Description lang="de">Thüringen</Description>
+			<Description lang="en">Thuringia</Description>
+			
+		</Collection>
+		<Collection name="TH_CorpusChristi">
+			<RefCollection name="TH" />
+			<Ref name="Corpus Christi" />
+			<Description lang="de">Thüringen mit Fronleichnam</Description>
+			<Description lang="en">Thuringia and Corpus Christi</Description>
+		</Collection>
+				
+		<Collection name="Weekend">
+			<Ref name="Saturday" />
+			<Ref name="Sunday" />
+			<Description lang="de">Wochenende</Description>
+			<Description lang="en">Weekend</Description>
+		</Collection>
+		
+		<Collection name="ChristmasEve">
+			<Ref name="Christmas Eve" />
+			<Description lang="de">Heiligabend</Description>
+			<Description lang="en">Christmas Eve</Description>
+		</Collection>
+	</Definitions>
+</HolidayConfig>

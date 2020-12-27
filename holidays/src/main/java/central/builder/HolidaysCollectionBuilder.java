@@ -1,5 +1,7 @@
 package central.builder;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -44,9 +46,15 @@ public class HolidaysCollectionBuilder {
 	 */
 	public HolidaysCollectionBuilder(Locale locale) {
 		this.locale = locale;
-		holidayXml = readXml(locale);
+		String xmlFile = allCountryDefinitions.getProperty(locale.getCountry());
+		holidayXml = readXml(locale, HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream(xmlFile));
 	}
 	
+	public HolidaysCollectionBuilder(Locale locale, InputStream strm) {
+		this.locale = locale;
+		holidayXml = readXml(locale, strm);
+	}
+
 	/**
 	 * 
 	 * @return
@@ -82,18 +90,31 @@ public class HolidaysCollectionBuilder {
 		return pMap.getOrDefault(KEY_LANG, locale.getLanguage());
 	}
 	
+	private ByteArrayOutputStream readInput(InputStream strm) {
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int len;
+			while ((len = strm.read(buffer)) > -1 ) {
+			    baos.write(buffer, 0, len);
+			}
+			baos.flush();
+			return baos;
+		} catch (Exception e) {
+			throw new HolidaysRuntimeException(e.getMessage(), e);
+		}
+	}
+	
 	/**
 	 * 
 	 * @param locale
 	 * @return
 	 */
-	private HolidayXmlFile readXml(Locale locale) {
-		String xmlFile = allCountryDefinitions.getProperty(locale.getCountry());
-		
-		InputStream xmlstrm = HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream(xmlFile);
+	private HolidayXmlFile readXml(Locale locale, InputStream xmlstrm) {
+		xmlstrm = new ByteArrayInputStream(readInput(xmlstrm).toByteArray());
+		xmlstrm.mark(0);
 		InputStream xmlschema = HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream("holidays.xsd");
 		try {
-			
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			dbFactory.setNamespaceAware(true);
 			SchemaFactory schemaFactory = SchemaFactory
@@ -108,7 +129,8 @@ public class HolidaysCollectionBuilder {
 			}
 			
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			xmlstrm = HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream(xmlFile);
+			xmlstrm.reset();
+			// xmlstrm = HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream(xmlFile);
 			HolidayXmlFile hxf = new HolidayXmlFile();
 	    	return hxf.parse(dBuilder.parse(xmlstrm));
 		} catch (Exception e) {

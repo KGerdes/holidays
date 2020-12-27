@@ -30,6 +30,13 @@
 			<Description lang="en">Holy Three Kings</Description>
 		</DefinitionDays>
 		
+		<DefinitionDays name="CarnivalMonday">
+			<Type>central.calc.EasterHolidays</Type>
+			<Param name="offset">-48</Param>
+			<Description lang="de">Rosenmontag</Description>
+			<Description lang="en">Carnival Monday</Description>
+		</DefinitionDays>
+		
 		<DefinitionDays name="International Womens Day">
 			<Type>central.calc.YearlyHolidays</Type>
 			<Param name="month">3</Param>
@@ -241,6 +248,12 @@
 			<Description lang="de">Nordrhein-Westfalen</Description>
 			<Description lang="en">North Rhine-Westphalia</Description>
 			
+		</Collection>
+		<Collection name="NRW and Carnival Monday" >
+			<RefCollection name="NRW" />
+			<Ref name="CarnivalMonday" />
+			<Description lang="de">Nordrhein-Westfalen mit Rosenmontag</Description>
+			<Description lang="en">North Rhine-Westphalia and Carnival Monday</Description>
 		</Collection>
 		<Collection name="RP" >
 			<Ref name="ForAll" />

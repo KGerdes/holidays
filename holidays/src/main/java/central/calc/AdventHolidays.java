@@ -13,7 +13,7 @@ public class AdventHolidays extends CalcHolidays {
 	}
 
 	@Override
-	public boolean calculateHoliday(LocalDate ld) {
+	public boolean verifyHoliday(LocalDate ld) {
 		
 		return ld.equals(getFourthAdventDate(ld.getYear()));
 	}
@@ -28,7 +28,7 @@ public class AdventHolidays extends CalcHolidays {
 
 	@Override
 	public void initialize(Map<String, String> params) {
-		offset = Integer.parseInt(params.get("offset"));
+		offset = Integer.parseInt(getParameter(params, "offset"));
 
 	}
 

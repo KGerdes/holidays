@@ -15,7 +15,8 @@ public class HolidaysCollection {
 	private List<ICalcHolidays> holidays = new ArrayList<>();
 	private Map<String, String> usedCollections;
 	
-	public HolidaysCollection() {
+	@SuppressWarnings("unused")
+	private HolidaysCollection() {
 		
 	}
 	
@@ -52,10 +53,14 @@ public class HolidaysCollection {
 	}
 	
 	public List<Entry<LocalDate, String>> getHolidaysOfAYear(int year) {
+		return getHolidaysOfARange(LocalDate.of(year, 1, 1), LocalDate.of(year, 12, 31));
+	}
+	
+	public List<Entry<LocalDate, String>> getHolidaysOfARange(LocalDate start, LocalDate end) {
 		List<Entry<LocalDate, String>> result = new ArrayList<>();
 		StringBuilder sb = new StringBuilder();
-		LocalDate crawler = LocalDate.of(year, 1, 1);
-		while (crawler.getYear() == year) {
+		LocalDate crawler = start;
+		while (!crawler.isAfter(end)) {
 			if (isHoliday(crawler, sb)) {
 				result.add(new AbstractMap.SimpleEntry<>(crawler, sb.toString()));
 				sb.setLength(0);

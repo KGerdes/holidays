@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import central.HolidaysRuntimeException;
+
 
 public abstract class CalcHolidays implements ICalcHolidays {
 
@@ -20,6 +22,18 @@ public abstract class CalcHolidays implements ICalcHolidays {
 	public void initialize(String language, Map<String, String> params) {
 		initialize(params);
 		setDescription(params.get(language));
+	}
+	
+	protected void throwIt(String msg) {
+		throw new HolidaysRuntimeException(String.format("%s in %s.\"%s\"",msg, getClass().getName(), name));
+	}
+	
+	protected String getParameter(Map<String, String> params, String pname) {
+		String pvalue = params.get(pname);
+		if (pvalue == null) {
+			throwIt(String.format("Missing parameter '%s'",pname));
+		}
+		return pvalue;
 	}
 	
 	public void addRange(Range r) {
@@ -46,7 +60,7 @@ public abstract class CalcHolidays implements ICalcHolidays {
 	}
 	
 	public boolean isHoliday(LocalDate ld) {
-		return (calculateHoliday(ld) && rangeCheck(ld));
+		return (verifyHoliday(ld) && rangeCheck(ld));
 	}
 
 	private boolean rangeCheck(LocalDate ld) {
@@ -60,7 +74,7 @@ public abstract class CalcHolidays implements ICalcHolidays {
 		return true;
 	}
 
-	public abstract boolean calculateHoliday(LocalDate ld);
+	public abstract boolean verifyHoliday(LocalDate ld);
 	public abstract void initialize(Map<String, String> params);
 
 }

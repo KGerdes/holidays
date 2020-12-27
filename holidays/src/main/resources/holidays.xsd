@@ -12,9 +12,9 @@
       <xs:sequence>
             <xs:element name="Configuration" type="ConfigurationType" maxOccurs="1" minOccurs="1"></xs:element>
             <xs:element name="Declarations" type="DeclarationsType"
-      		minOccurs="0" maxOccurs="1" />
+      		minOccurs="1" maxOccurs="1" />
       	<xs:element name="Definitions" type="DefinitionsType"
-      		minOccurs="0" maxOccurs="1" />
+      		minOccurs="1" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="datum" type="xs:date" />
    </xs:complexType>
@@ -22,7 +22,7 @@
 
    <xs:complexType name="DeclarationsType">
    	<xs:sequence>
-   		<xs:choice maxOccurs="unbounded" minOccurs="1">
+   		<xs:choice maxOccurs="unbounded" minOccurs="0">
    			<xs:element name="DefinitionDays"
    				type="DefinitionDaysType">
    			</xs:element>
@@ -35,7 +35,7 @@
    <xs:complexType name="DefinitionsType">
 
    	<xs:sequence>
-   		<xs:element name="Collection" type="CollectionType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+   		<xs:element name="Collection" type="CollectionType" minOccurs="0" maxOccurs="unbounded"></xs:element>
    	</xs:sequence>
    </xs:complexType>
 

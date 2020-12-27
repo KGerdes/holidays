@@ -19,7 +19,7 @@ public class WeeklyHolidays extends CalcHolidays {
 	
 	@Override
 	public void initialize(Map<String, String> params) {
-		dayOfWeek = DayOfWeek.valueOf(params.get(PARAM_DAY));
+		dayOfWeek = DayOfWeek.valueOf(getParameter(params, PARAM_DAY));
 	}
 
 	public DayOfWeek getDayOfWeek() {
@@ -27,7 +27,7 @@ public class WeeklyHolidays extends CalcHolidays {
 	}
 
 	@Override
-	public boolean calculateHoliday(LocalDate ld) {
+	public boolean verifyHoliday(LocalDate ld) {
 		return dayOfWeek.equals(ld.getDayOfWeek());
 	}
 

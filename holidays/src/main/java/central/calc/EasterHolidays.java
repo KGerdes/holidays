@@ -17,7 +17,7 @@ public class EasterHolidays extends CalcHolidays {
 	}
 
 	@Override
-	public boolean calculateHoliday(LocalDate ld) {
+	public boolean verifyHoliday(LocalDate ld) {
 		return getEasterDependentHoliday(ld.getYear(), offset).equals(ld);
 	}
 	
@@ -28,7 +28,7 @@ public class EasterHolidays extends CalcHolidays {
 
 	@Override
 	public void initialize(Map<String, String> params) {
-		offset = Integer.parseInt(params.get(PARAM_OFFSET));
+		offset = Integer.parseInt(getParameter(params, PARAM_OFFSET));
 
 	}
 

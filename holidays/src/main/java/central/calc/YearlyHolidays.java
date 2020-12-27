@@ -17,13 +17,21 @@ public class YearlyHolidays extends CalcHolidays {
 	
 	@Override
 	public void initialize(Map<String, String> params) {
-		month = Integer.parseInt(params.get(PARAM_MONTH));
-		day = Integer.parseInt(params.get(PARAM_DAY));
+		month = Integer.parseInt(getParameter(params, PARAM_MONTH));
+		day = Integer.parseInt(getParameter(params, PARAM_DAY));
 	}
 
 	@Override
-	public boolean calculateHoliday(LocalDate ld) {
+	public boolean verifyHoliday(LocalDate ld) {
 		return (day == ld.getDayOfMonth()) && (month == ld.getMonthValue());
+	}
+	
+	public int getDay() {
+		return day;
+	}
+	
+	public int getMonth() {
+		return month;
 	}
 
 	

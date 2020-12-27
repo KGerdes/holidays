@@ -31,19 +31,29 @@ public class DECollectionTest {
 	
 	@Test
 	public void testGetKeys() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-		HolidaysGeneralCreator.getPossibleCollectionKeys(Locale.GERMANY)
+		doit(Locale.GERMANY, 2020, 2020);
+	}
+	
+	@Test
+	public void testUK() {
+		doit(Locale.UK, 2016, 2020);
+	}
+	
+	private void doit(Locale locale, int fromYear, int toYear) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EE dd.MM.yyyy");
+		HolidaysGeneralCreator.getPossibleCollectionKeys(locale)
 		.stream()
 		.sorted()
 		.filter(key -> !key.equals("Weekend"))
 		.forEach(key -> {
-			int year = 2020;
-			HolidaysCollection hc = HolidaysGeneralCreator.createHolidays(Locale.GERMANY,"lang=de;use=" + key);
-			logit("\n* Feiertage " + year + " - " + hc.getAllUsedDescriptions() + " * * * * * * * ");
-			hc.getHolidaysOfAYear(year).stream().forEach(entry -> {
-				logit(String.format("%s : %s", entry.getKey().format(dtf), entry.getValue()));
-			});
-		});
 			
+			HolidaysCollection hc = HolidaysGeneralCreator.createHolidays(locale,"use=" + key);
+			for (int year = fromYear;year <= toYear;year++) {
+				logit("\n* Feiertage " + year + " - " + hc.getAllUsedDescriptions() + " * * * * * * * ");
+				hc.getHolidaysOfAYear(year).stream().forEach(entry -> {
+					logit(String.format("%s : %s", entry.getKey().format(dtf), entry.getValue()));
+				});
+			}
+		});	
 	}
 }

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HolidayConfig xmlns="http://kgerdes.de/namespace"
+				xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+				 >
+	<Configuration>
+		<Languages>de,en</Languages>
+		<Dateformat>dd.MM.yyyy</Dateformat>
+	</Configuration>
+	<Declarations>
+		<DefinitionDays name="2ndJanuary">
+			<Type>central.calc.AlternativeWeekdayHolidays</Type>
+			<Param name="month">1</Param>
+			<Param name="day">2</Param>
+			<Param name="offsets">1,0,0,0,0,2,2</Param>
+			<Description lang="de">2. Januar</Description>
+			<Description lang="en">2nd January</Description>
+		</DefinitionDays>
+		<DefinitionDays name="StPatricksDay">
+			<Type>central.calc.AlternativeWeekdayHolidays</Type>
+			<Param name="month">3</Param>
+			<Param name="day">17</Param>
+			<Param name="offsets">0,0,0,0,0,2,1</Param>
+			<Description lang="de">St. Patrick's Day</Description>
+			<Description lang="en">St. Patrick's Day</Description>
+		</DefinitionDays>
+		<DefinitionDays name="Easter Monday">
+			<Type>central.calc.EasterHolidays</Type>
+			<Param name="offset">1</Param>
+			<Description lang="de">Ostermontag</Description>
+			<Description lang="en">Easter Monday</Description>
+		</DefinitionDays>
+		<DefinitionDays name="OrangeMensDay">
+			<Type>central.calc.AlternativeWeekdayHolidays</Type>
+			<Param name="month">7</Param>
+			<Param name="day">12</Param>
+			<Param name="offsets">0,0,0,0,0,2,1</Param>
+			<Description lang="de">Orangemen's Day</Description>
+			<Description lang="en">Orangemen's Day</Description>
+		</DefinitionDays>
+		
+		<DefinitionDays name="August Bank Holiday SCO">
+			<Type>central.calc.IndexedWeekdayInMonthHoliday</Type>
+			<Param name="month">8</Param>
+			<Param name="day">1</Param>
+			<Param name="weekday">MONDAY</Param>
+			<Param name="index">1</Param>
+			<Description lang="de">Bank Holiday im August</Description>
+			<Description lang="en">Summer Bank Holiday</Description>
+			
+			</DefinitionDays>
+			<DefinitionDays name="August Bank Holiday">
+				<Type>central.calc.IndexedWeekdayInMonthHoliday</Type>
+				<Param name="month">8</Param>
+				<Param name="day">1</Param>
+				<Param name="weekday">MONDAY</Param>
+				<Param name="index">5</Param>
+				<Description lang="de">Bank Holiday im August</Description>
+				<Description lang="en">Summer Bank Holiday</Description>
+			
+			</DefinitionDays>
+		
+			<DefinitionDays name="StAndrewsDay">
+				<Type>central.calc.AlternativeWeekdayHolidays</Type>
+				<Param name="month">11</Param>
+				<Param name="day">30</Param>
+				<Param name="offsets">0,0,0,0,0,2,1</Param>
+				<Description lang="de">St Andrew's Day</Description>
+				<Description lang="en">St Andrew's Day</Description>
+			</DefinitionDays>
+		<DefinitionBlock name="ForAll">
+			<DefinitionDays name="NewYear">
+				<Type>central.calc.AlternativeWeekdayHolidays</Type>
+				<Param name="month">1</Param>
+				<Param name="day">1</Param>
+				<Param name="offsets">0,0,0,0,0,2,1</Param>
+				<Description lang="de">Neujahr</Description>
+				<Description lang="en">New Year</Description>
+			</DefinitionDays>
+			<DefinitionDays name="Good Friday">
+				<Type>central.calc.EasterHolidays</Type>
+				<Param name="offset">-2</Param>
+				<Description lang="de">Karfreitag</Description>
+				<Description lang="en">Good Friday</Description>
+			
+			</DefinitionDays>
+			
+			<DefinitionDays name="Bank Holiday">
+				<Type>central.calc.IndexedWeekdayInMonthHoliday</Type>
+				<Param name="month">5</Param>
+				<Param name="day">1</Param>
+				<Param name="weekday">MONDAY</Param>
+				<Param name="index">1</Param>
+				<Description lang="de">Bank Holiday im Mai</Description>
+				<Description lang="en">Bank Holiday</Description>
+			
+			</DefinitionDays>
+			<DefinitionDays name="Spring Bank Holiday">
+				<Type>central.calc.IndexedWeekdayInMonthHoliday</Type>
+				<Param name="month">5</Param>
+				<Param name="day">1</Param>
+				<Param name="weekday">MONDAY</Param>
+				<Param name="index">5</Param>
+				<Description lang="de">Spring Bank Holiday im Mai</Description>
+				<Description lang="en">Spring Bank Holiday</Description>
+			
+			</DefinitionDays>
+			<DefinitionDays name="1stChristmasHoliday">
+				<Type>central.calc.AlternativeWeekdayHolidays</Type>
+				<Param name="month">12</Param>
+				<Param name="day">25</Param>
+				<Param name="offsets">0,0,0,0,0,2,1</Param>
+				<Description lang="de">1. Weihnachtsfeiertag</Description>
+				<Description lang="en">1st Christmas Holiday</Description>
+			</DefinitionDays>
+			<DefinitionDays name="2ndChristmasHoliday">
+				<Type>central.calc.AlternativeWeekdayHolidays</Type>
+				<Param name="month">12</Param>
+				<Param name="day">26</Param>
+				<Param name="offsets">0,0,0,0,0,2,2</Param>
+				<Description lang="de">2. Weihnachtsfeiertag</Description>
+				<Description lang="en">2nd Christmas Holiday</Description>
+			</DefinitionDays>
+		</DefinitionBlock>
+	</Declarations>
+	<Definitions>
+		<Collection name="ENG">
+			<Ref name="ForAll" />
+			<Ref name="Easter Monday" />
+			<Ref name="August Bank Holiday" />
+			<Description lang="de">England</Description>
+			<Description lang="en">England</Description>
+		</Collection>
+		<Collection name="WAL">
+			<Ref name="ForAll" />
+			<Ref name="Easter Monday" />
+			<Ref name="August Bank Holiday" />
+			<Description lang="de">Wales</Description>
+			<Description lang="en">Wales</Description>
+		</Collection>
+		<Collection name="NIR">
+			<Ref name="ForAll" />
+			<Ref name="Easter Monday" />
+			<Ref name="StPatricksDay" />
+			<Ref name="OrangeMensDay" />
+			<Ref name="August Bank Holiday" />
+			<Description lang="de">Nordirland</Description>
+			<Description lang="en">Northern Ireland</Description>
+		</Collection>
+		<Collection name="SCO">
+			<Ref name="ForAll" />
+			<Ref name="2ndJanuary" />
+			<Ref name="August Bank Holiday SCO" />
+			<Ref name="StAndrewsDay" />
+			<Description lang="de">Schottland</Description>
+			<Description lang="en">Scotland</Description>
+		</Collection>
+	</Definitions>
+	</HolidayConfig>

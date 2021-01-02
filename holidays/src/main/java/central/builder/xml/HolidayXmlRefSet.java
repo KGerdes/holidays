@@ -19,6 +19,7 @@ import central.HolidaysRuntimeException;
  */
 public class HolidayXmlRefSet extends HolidayXmlBaseObject {
 	
+	private boolean standalone = true;
 	private Map<String, HolidayXmlRef> refmap = new HashMap<>();
 
 	/**
@@ -27,6 +28,10 @@ public class HolidayXmlRefSet extends HolidayXmlBaseObject {
 	@Override
 	public void readFromXml(HolidayXmlBaseObject parent, Element element) {
 		super.readFromXml(parent , element);
+		String tmp = element.getAttribute("standalone").toLowerCase();
+		if ("false".equals(tmp)) {
+			standalone = false;
+		}
 		NodeList nlist = element.getChildNodes(); 
 		for (Element ref : getChildsByTagName(nlist, HolidayXmlConstants.ELE_REF)) {
 			HolidayXmlRef hxr = new HolidayXmlRef();
@@ -77,4 +82,10 @@ public class HolidayXmlRefSet extends HolidayXmlBaseObject {
 	protected boolean hasDescriptions() {
 		return true;
 	}
+
+	public boolean isStandalone() {
+		return standalone;
+	}
+	
+	
 }

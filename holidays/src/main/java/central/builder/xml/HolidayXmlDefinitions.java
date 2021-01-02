@@ -13,12 +13,15 @@ import central.HolidaysRuntimeException;
 
 public class HolidayXmlDefinitions extends HolidayXmlBaseObject {
 
+	
+	
 	private Map<String, HolidayXmlRefSet> allDefinitions = new HashMap<>();
 	
 	@Override
 	public void readFromXml(HolidayXmlBaseObject parent, Element definitions) {
 		super.readFromXml(parent , definitions);
 		NodeList nlist = definitions.getChildNodes(); 
+		
 		for (Element defcoll : getChildsByTagName(nlist, HolidayXmlConstants.ELE_COLLECTION)) {
 			HolidayXmlRefSet hxrs = new HolidayXmlRefSet();
 			hxrs.readFromXml(this, defcoll, allDefinitions.values());

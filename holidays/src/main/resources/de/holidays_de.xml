@@ -172,7 +172,7 @@
 		</DefinitionBlock>
 	</Declarations>
 	<Definitions>
-		<Collection name="BW">
+		<Collection name="BW" standalone="true" >
 			<Ref name="ForAll" />
 			<Ref name="Holy Three Kings" />
 			<Ref name="Corpus Christi" />
@@ -188,13 +188,13 @@
 			<Description lang="de">Bayern</Description>
 			<Description lang="en">Bavaria</Description>
 		</Collection>
-		<Collection name="BY_Augsburg" >
+		<Collection name="BY_Augsburg" standalone="false" >
 			<RefCollection name="BY" />
 			<Ref name="Augsburg Peace Festival" />
 			<Description lang="de">Bayern mit Augsburger Friedensfest</Description>
 			<Description lang="en">Bavaria and Augsburg Peace Festival</Description>
 		</Collection>
-		<Collection name="BY_MariaeHimmelfahrt" >
+		<Collection name="BY_MariaeHimmelfahrt" standalone="false" >
 			<RefCollection name="BY" />
 			<Ref name="Assumption Day" />
 			<Description lang="de">Bayern mit Mariä Himmelfahrt</Description>
@@ -249,7 +249,7 @@
 			<Description lang="en">North Rhine-Westphalia</Description>
 			
 		</Collection>
-		<Collection name="NRW and Carnival Monday" >
+		<Collection name="NRW and Carnival Monday" standalone="false" >
 			<RefCollection name="NRW" />
 			<Ref name="CarnivalMonday" />
 			<Description lang="de">Nordrhein-Westfalen mit Rosenmontag</Description>
@@ -278,7 +278,7 @@
 			<Description lang="de">Sachsen</Description>
 			<Description lang="en">Saxony</Description>
 		</Collection>
-		<Collection name="SN_CorpusChristi">
+		<Collection name="SN_CorpusChristi" standalone="false" >
 			<RefCollection name="SN" />
 			<Ref name="Corpus Christi" />
 			<Description lang="de">Sachsen mit Fronleichnam</Description>
@@ -303,21 +303,21 @@
 			<Description lang="en">Thuringia</Description>
 			
 		</Collection>
-		<Collection name="TH_CorpusChristi">
+		<Collection name="TH_CorpusChristi" standalone="false" >
 			<RefCollection name="TH" />
 			<Ref name="Corpus Christi" />
 			<Description lang="de">Thüringen mit Fronleichnam</Description>
 			<Description lang="en">Thuringia and Corpus Christi</Description>
 		</Collection>
 				
-		<Collection name="Weekend">
+		<Collection name="Weekend" standalone="false" >
 			<Ref name="Saturday" />
 			<Ref name="Sunday" />
 			<Description lang="de">Wochenende</Description>
 			<Description lang="en">Weekend</Description>
 		</Collection>
 		
-		<Collection name="ChristmasEve">
+		<Collection name="ChristmasEve" standalone="false" >
 			<Ref name="Christmas Eve" />
 			<Description lang="de">Heiligabend</Description>
 			<Description lang="en">Christmas Eve</Description>

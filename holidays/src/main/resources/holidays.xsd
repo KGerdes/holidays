@@ -113,18 +113,19 @@
     		<xs:choice>
     			<xs:element name="Ref" type="RefType"></xs:element>
     			<xs:element name="RefCollection"
-    				type="RefCollectionType" >
+    				type="RefCollectionType">
     			</xs:element>
-    			<xs:element name="Description" type="DescriptionType" ></xs:element>
+    			<xs:element name="Description" type="DescriptionType"></xs:element>
     		</xs:choice>
     	</xs:sequence>
     	<xs:attribute name="name">
     		<xs:simpleType>
-    			<xs:restriction base="xs:string">
+    			<xs:restriction base="xs:string"> 
     				<xs:minLength value="1"></xs:minLength>
     			</xs:restriction>
     		</xs:simpleType>
     	</xs:attribute>
+    	<xs:attribute name="standalone" type="xs:boolean" use="optional"></xs:attribute>
     </xs:complexType>
 
     <xs:complexType name="RefType">

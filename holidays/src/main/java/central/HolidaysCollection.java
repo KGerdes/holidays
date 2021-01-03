@@ -7,22 +7,38 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Set;
 
 import central.calc.ICalcHolidays;
+import central.calc.SingleYearlyHolidays;
 
+/**
+ * a class to ask for holidays of a specific country and parameters (maybe regions)
+ * 
+ * @author Karsten
+ *
+ */
 public class HolidaysCollection {
 	private List<ICalcHolidays> holidays = new ArrayList<>();
 	private Map<String, String> usedCollections;
+	private Map<String, ICalcHolidays> namesAndHolidays = new HashMap<>();
 	
-	@SuppressWarnings("unused")
-	private HolidaysCollection() {
-		
-	}
 	
 	public HolidaysCollection(List<ICalcHolidays> list, Map<String, String> usedCollections) {
 		this.usedCollections = usedCollections;
 		holidays.addAll(list);
+		list.stream().forEach(ic -> {
+			if (!namesAndHolidays.containsKey(ic.getName())) {
+				namesAndHolidays.put(ic.getName(), ic);
+			} else {
+				throw new HolidaysRuntimeException("name '" + ic.getName() + "' already exists");
+			}
+		});
+	}
+	
+	public List<String> getAllNames() {
+		return holidays.stream().map(ICalcHolidays::getName).sorted().collect(Collectors.toList());
 	}
 	
 	public Set<String> getUsedKeys() {
@@ -66,6 +82,21 @@ public class HolidaysCollection {
 				sb.setLength(0);
 			}
 			crawler = crawler.plusDays(1);
+		}
+		return result;
+	}
+
+	public LocalDate getSingleHolidayOfAYear(String name, int year, StringBuilder sb) {
+		LocalDate result = null;
+		ICalcHolidays ch = namesAndHolidays.get(name);
+		if (ch != null) {
+			result = ch.calculateDateOfAYear(year);
+			if (result != null) {
+				boolean isH = sb != null ? ch.isHoliday(result, sb) : ch.isHoliday(result);
+				if (!isH) {
+					throw new HolidaysRuntimeException("should not happen!");
+				}
+			}
 		}
 		return result;
 	}

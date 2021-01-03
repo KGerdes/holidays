@@ -6,7 +6,11 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)				
 @Suite.SuiteClasses({				
-  HolidaysMatrixTest.class  			
+  HolidaysMatrixTest.class,
+  HolidaysOfAllCountriesBuilderTest.class,
+  DECollectionTest.class,
+  RangeTest.class,
+  CalculationTest.class
 })
 public class HolidaysTestSuite {
 

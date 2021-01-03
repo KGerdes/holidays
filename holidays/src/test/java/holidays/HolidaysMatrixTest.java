@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 
 import org.junit.Test;
 
-import central.HolidaysGeneralCreator;
+import central.HolidaysOfAllCountriesBuilder;
 import central.builder.HolidaysCollectionBuilder;
 import central.builder.HolidaysMatrix;
 import org.junit.Assert;
@@ -53,13 +53,13 @@ public class HolidaysMatrixTest {
 	
 	@Test
 	public void testMatrixDE() {
-		HolidaysCollectionBuilder hcb = HolidaysGeneralCreator.createBuilder(Locale.GERMANY);
+		HolidaysCollectionBuilder hcb = HolidaysOfAllCountriesBuilder.createBuilder(Locale.GERMANY);
 		doMatrixTest(hcb, 2021, deMatrix);
 	}
 	
 	@Test
 	public void testMatrixUK() {
-		HolidaysCollectionBuilder hcb = HolidaysGeneralCreator.createBuilder(Locale.UK);
+		HolidaysCollectionBuilder hcb = HolidaysOfAllCountriesBuilder.createBuilder(Locale.UK);
 		doMatrixTest(hcb, 2021, ukMatrix);
 	}
 	
@@ -69,7 +69,7 @@ public class HolidaysMatrixTest {
 		int index = 0;
 		for (Entry<LocalDate, String> entry : hm.getHolidays()) {
 			StringBuilder sb = new StringBuilder();
-			sb.append(dtf.format(entry.getKey()))
+			sb.append(TestUtilities.formatDate(entry.getKey()))
 				.append("|")
 				.append(entry.getValue())
 				.append("|");

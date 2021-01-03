@@ -28,16 +28,15 @@ public class AlternativeWeekdayHolidays extends YearlyHolidays {
 			}
 		}
 	}
-
+	
 	@Override
-	public boolean verifyHoliday(LocalDate ld) {
-		
-		LocalDate toCheck = LocalDate.of(ld.getYear(), getMonth(), getDay());
+	public LocalDate calculateDateOfAYear(int year) {
+		LocalDate toCheck = LocalDate.of(year, getMonth(), getDay());
 		int offs = offsets[toCheck.getDayOfWeek().getValue() - 1];
 		if (offs != 0) {
 			toCheck = toCheck.plusDays(offs);
 		}
-		return ld.equals(toCheck);
+		return toCheck;
 	}
 
 }

@@ -18,6 +18,7 @@ public abstract class CalcHolidays implements ICalcHolidays {
 		this.name = name;
 	}
 	
+	
 	// @Override
 	public void initialize(String language, Map<String, String> params) {
 		initialize(params);
@@ -41,6 +42,14 @@ public abstract class CalcHolidays implements ICalcHolidays {
 			ranges = new ArrayList<>();
 		}
 		ranges.add(r);
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public String getName() {
+		return name;
 	}
 	
 	public String getDescription() {
@@ -73,8 +82,10 @@ public abstract class CalcHolidays implements ICalcHolidays {
 		}
 		return true;
 	}
-
+	
 	public abstract boolean verifyHoliday(LocalDate ld);
 	public abstract void initialize(Map<String, String> params);
+	
+	
 
 }

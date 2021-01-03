@@ -21,7 +21,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import central.HolidaysCollection;
-import central.HolidaysGeneralCreator;
+import central.HolidaysOfAllCountriesBuilder;
 import central.HolidaysRuntimeException;
 import central.builder.xml.HolidayXmlConstants;
 import central.builder.xml.HolidayXmlFile;
@@ -50,7 +50,7 @@ public class HolidaysCollectionBuilder {
 	public HolidaysCollectionBuilder(Locale locale) {
 		this.locale = locale;
 		String xmlFile = allCountryDefinitions.getProperty(locale.getCountry());
-		holidayXml = readXml(locale, HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream(xmlFile));
+		holidayXml = readXml(locale, HolidaysOfAllCountriesBuilder.class.getClassLoader().getResourceAsStream(xmlFile));
 	}
 	
 	public HolidaysCollectionBuilder(Locale locale, InputStream strm) {
@@ -128,7 +128,7 @@ public class HolidaysCollectionBuilder {
 	private HolidayXmlFile readXml(Locale locale, InputStream xmlstrm) {
 		xmlstrm = new ByteArrayInputStream(readInput(xmlstrm).toByteArray());
 		xmlstrm.mark(0);
-		InputStream xmlschema = HolidaysGeneralCreator.class.getClassLoader().getResourceAsStream("holidays.xsd");
+		InputStream xmlschema = HolidaysOfAllCountriesBuilder.class.getClassLoader().getResourceAsStream("holidays.xsd");
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			dbFactory.setNamespaceAware(true);
@@ -160,23 +160,6 @@ public class HolidaysCollectionBuilder {
 	 */
 	public static String getClassName(String country) {
 		return classNames.get(country);
-	}
-
-	/**
-	 * 
-	 * @param params
-	 * @param paramToAdd
-	 * @return
-	 */
-	public static String addParam(String params, String paramToAdd) {
-		StringBuilder sb = new StringBuilder(params);
-		if (paramToAdd != null) {
-			if (sb.length() > 0) {
-				sb.append(";");
-			}
-			sb.append(KEY_LANG_EQUALSIGN).append(paramToAdd);
-		}
-		return sb.toString();
 	}
 	
 	/**

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import com.aldaviva.easter4j.Easter4J;
 
-public class EasterHolidays extends CalcHolidays {
+public class EasterHolidays extends SingleYearlyHolidays {
 
 	
 	private static final String PARAM_OFFSET = "offset";
@@ -14,11 +14,6 @@ public class EasterHolidays extends CalcHolidays {
 	
 	public EasterHolidays(String name) {
 		super(name);
-	}
-
-	@Override
-	public boolean verifyHoliday(LocalDate ld) {
-		return getEasterDependentHoliday(ld.getYear(), offset).equals(ld);
 	}
 	
 	public static LocalDate getEasterDependentHoliday(int year, int offsetInDays)
@@ -30,6 +25,11 @@ public class EasterHolidays extends CalcHolidays {
 	public void initialize(Map<String, String> params) {
 		offset = Integer.parseInt(getParameter(params, PARAM_OFFSET));
 
+	}
+
+	@Override
+	public LocalDate calculateDateOfAYear(int year) {
+		return getEasterDependentHoliday(year, offset);
 	}
 
 }

@@ -49,11 +49,15 @@ public class Range {
 	public static Range createRange(String startDate, String endDate, String scopeStr, DateTimeFormatter dtf) {
 		LocalDate st = null;
 		LocalDate en = null;
-		if (startDate != null && startDate.length() > 0) {
-			st = LocalDate.parse(startDate,dtf); 
+		if (startDate != null) {
+			if (startDate.length() > 0) {
+				st = LocalDate.parse(startDate,dtf); 
+			}
 		}
-		if (endDate != null && endDate.length() > 0) {
-			en = LocalDate.parse(endDate,dtf); 
+		if (endDate != null) {
+			if (endDate.length() > 0) {
+				en = LocalDate.parse(endDate,dtf); 
+			}
 		}
 		Scope sco = Scope.valueOf((scopeStr != null && scopeStr.length() > 0) ? scopeStr.toUpperCase() : Scope.INNER.name());
 		if (st == null && en == null) {

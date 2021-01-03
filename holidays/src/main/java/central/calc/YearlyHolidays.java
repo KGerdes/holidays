@@ -3,7 +3,7 @@ package central.calc;
 import java.time.LocalDate;
 import java.util.Map;
 
-public class YearlyHolidays extends CalcHolidays {
+public class YearlyHolidays extends SingleYearlyHolidays {
 
 	private static final String PARAM_DAY = "day";
 	private static final String PARAM_MONTH = "month";
@@ -20,11 +20,6 @@ public class YearlyHolidays extends CalcHolidays {
 		month = Integer.parseInt(getParameter(params, PARAM_MONTH));
 		day = Integer.parseInt(getParameter(params, PARAM_DAY));
 	}
-
-	@Override
-	public boolean verifyHoliday(LocalDate ld) {
-		return (day == ld.getDayOfMonth()) && (month == ld.getMonthValue());
-	}
 	
 	public int getDay() {
 		return day;
@@ -32,6 +27,11 @@ public class YearlyHolidays extends CalcHolidays {
 	
 	public int getMonth() {
 		return month;
+	}
+
+	@Override
+	public LocalDate calculateDateOfAYear(int year) {
+		return LocalDate.of(year, month, day);
 	}
 
 	

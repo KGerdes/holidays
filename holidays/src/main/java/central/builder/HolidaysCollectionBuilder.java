@@ -4,10 +4,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import javax.xml.XMLConstants;
@@ -21,6 +23,7 @@ import javax.xml.validation.Validator;
 import central.HolidaysCollection;
 import central.HolidaysGeneralCreator;
 import central.HolidaysRuntimeException;
+import central.builder.xml.HolidayXmlConstants;
 import central.builder.xml.HolidayXmlFile;
 
 public class HolidaysCollectionBuilder {
@@ -78,6 +81,18 @@ public class HolidaysCollectionBuilder {
 		}
 		language = readLanguage(pMap, locale.getLanguage());
 		return create(pMap);
+	}
+	
+	public HolidaysCollection createCollectionByKeys(String key, String... keys) {
+		StringBuilder keyStr = new StringBuilder(key);
+		for (String k : keys) {
+			keyStr.append(",").append(k);
+		}
+		String tmp = String.format("%s%s%s"
+				, HolidayXmlConstants.KEY_USE
+				, KEYVALUE_SPLIT,
+				keyStr.toString());
+		return createCollection(tmp);
 	}
 	
 	/**
@@ -172,6 +187,30 @@ public class HolidaysCollectionBuilder {
 	protected HolidaysCollection create(Map<String, String> parameters) {
 		return holidayXml.getHolidays(language, parameters);
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<String> getPossibleCollectionKeys(Boolean standalone) {
+		return holidayXml.getPossibleCollectionKeys(standalone);
+	}
+	
+	/**
+	 * 
+	 * @param year
+	 * @return
+	 */
+	public HolidaysMatrix getHolidaysMatrix(int year) {
+		HolidaysMatrix hm = new HolidaysMatrix(year);
+		List<String> cklist = getPossibleCollectionKeys(true);
+		for (String key : cklist) {
+			HolidaysCollection hc = createCollectionByKeys(key);
+			List<Entry<LocalDate, String>> res = hc.getHolidaysOfAYear(year);
+			hm.addHolidays(key, hc.getUsedDescription(key), res);
+		}
+		return hm;
+	}
 
 	/*
 	 * initialize the available builder classes
@@ -186,9 +225,7 @@ public class HolidaysCollectionBuilder {
 		}
 	}
 
-	public List<String> getPossibleCollectionKeys() {
-		return holidayXml.getPossibleCollectionKeys();
-	}
+	
 	 
 	 
 }

@@ -63,12 +63,34 @@ public class HolidaysGeneralCreator {
 	}
 	
 	/**
+	 * creates a HolidaysCollectionBuilder
+	 * 
+	 * @param locale the locale to create or get the builder
+	 * @return the HolidaysCollectionBuilder
+	 */
+	public static HolidaysCollectionBuilder createBuilder(Locale locale) {
+		return getBuilder(locale);
+	}
+	
+	/**
 	 * get all possible Collection of holidays in the builder referenced by locale
+	 * 
 	 * @param locale the key to find the builder
-	 * @return a list of possible holiday collections
+	 * @return a list of possible holiday collection names
 	 */
 	public static List<String> getPossibleCollectionKeys(Locale locale) {
-		return getBuilder(locale).getPossibleCollectionKeys();
+		return getBuilder(locale).getPossibleCollectionKeys(null);
+	}
+	
+	/**
+	 * get all possible collection of holidays in the builder referenced by locale and the standalone value
+	 * 
+	 * @param locale the key to find the builder
+	 * @param standalone collection type standalone true/false
+	 * @return a list of possible holiday collection names
+	 */
+	public static List<String> getPossibleCollectionKeys(Locale locale, boolean standalone) {
+		return getBuilder(locale).getPossibleCollectionKeys(standalone);
 	}
 
 

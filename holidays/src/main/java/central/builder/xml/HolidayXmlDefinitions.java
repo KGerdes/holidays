@@ -52,7 +52,17 @@ public class HolidayXmlDefinitions extends HolidayXmlBaseObject {
 		
 	}
 
-	public List<String> getPossibleCollectionKeys() {
-		return allDefinitions.keySet().stream().sorted().collect(Collectors.toList());
+	public List<String> getPossibleCollectionKeys(Boolean standalone) {
+		return allDefinitions.entrySet()
+				.stream()
+				.filter(e -> {
+					if (standalone != null) {
+						return (standalone.booleanValue() == e.getValue().isStandalone());
+					}
+					return true;
+				})
+				.sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
+				.map(e -> e.getKey())
+				.collect(Collectors.toList());
 	}
 }

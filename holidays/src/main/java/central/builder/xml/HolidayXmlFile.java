@@ -64,7 +64,7 @@ public class HolidayXmlFile extends HolidayXmlBaseObject {
 	public HolidaysCollection getHolidays(String language, Map<String, String> parameters) {
 		Map<String, HolidayXmlDays> calculated = new HashMap<>();
 		Map<String, String> usedCollections = new HashMap<>();
-		String uses = parameters.get("use");
+		String uses = parameters.get(HolidayXmlConstants.KEY_USE);
 		Set<String> use = new HashSet<>();
 		use.addAll(Arrays.asList(uses.split(",")));
 		
@@ -92,8 +92,8 @@ public class HolidayXmlFile extends HolidayXmlBaseObject {
 		
 	}
 
-	public List<String> getPossibleCollectionKeys() {
-		return allDefinitions.getPossibleCollectionKeys();
+	public List<String> getPossibleCollectionKeys(Boolean standalone) {
+		return allDefinitions.getPossibleCollectionKeys(standalone);
 	}
 	
 	public DateTimeFormatter getDateTimeFormatter() {

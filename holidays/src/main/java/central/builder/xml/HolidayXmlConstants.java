@@ -19,6 +19,8 @@ public class HolidayXmlConstants {
 	public static final String ELE_LANGUAGES = "Languages";
 
 	public static final String ELE_DATEFORMAT = "Dateformat";
+
+	public static final String KEY_USE = "use";
 	
 	private HolidayXmlConstants() {}
 	

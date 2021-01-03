@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import central.HolidaysCollection;
 import central.HolidaysGeneralCreator;
+import central.builder.HolidaysCollectionBuilder;
+import central.builder.HolidaysMatrix;
 
 
 
@@ -147,6 +149,12 @@ public class DECollectionTest {
 		
 	}
 	
+	@Test
+	public void testMatrix() {
+		HolidaysCollectionBuilder hcb = HolidaysGeneralCreator.createBuilder(Locale.UK);
+		HolidaysMatrix hm = hcb.getHolidaysMatrix(2021);
+		System.out.println(hm.toString());
+	}
 	
 
 	private HolidaysCollection getHolidays(Locale locale, String use) {
